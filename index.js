@@ -3,10 +3,10 @@ const PRIVATE_KEY = process.argv.slice(2)[0];
 
 const Web3 = require('web3');
 
-const RPC_URL = 'https://speedy-nodes-nyc.moralis.io/3059860b58c72da9ca7dc1ec/eth/mainnet';
-//const RPC_URL = 'https://speedy-nodes-nyc.moralis.io/b5ff4012083d66a83fad1e18/eth/mainnet';
-const ADDRESS = '0x7DD0C5645Ce647ed46D269bd62676308F4fd5dEE';
-const OTHER_ADDRESS = '0xBbbbbBB86db8A5056C3E8d19BFC173Ec6659dC8D';
+//const RPC_URL = 'https://speedy-nodes-nyc.moralis.io/3059860b58c72da9ca7dc1ec/eth/mainnet';
+const RPC_URL = 'https://speedy-nodes-nyc.moralis.io/3059860b58c72da9ca7dc1ec/eth/kovan';
+const ADDRESS = '0x399a2b002a89aD9450482d766af3a7EA11e0715f';
+const OTHER_ADDRESS = '0xA3db086c1F13ae4dC270d57aab1A8546415916B7';
 
 // load web3
 const web3 = new Web3(RPC_URL);
@@ -90,6 +90,7 @@ async function doStuff() {
 	currentGasPrice = await web3.eth.getGasPrice();
 	gasLimit = await web3.eth.estimateGas(trx);
 	trx.gas = gasLimit;
+	mult = MULT;
 
 	if (wouldLowestPass()) tryTrx();
 	else {
